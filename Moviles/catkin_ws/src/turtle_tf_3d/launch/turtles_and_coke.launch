@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+    <!-- Lanzar el nodo turtles_and_coke_broadcaster -->
+    <node name="turtles_and_coke_broadcaster" pkg="turtle_tf_3d" type="turtles_and_coke_broadcaster.py" output="screen"/>
+
+    <!-- Lanzar el nodo turtles_and_coke_listener -->
+    <node name="turtles_and_coke_listener" pkg="turtle_tf_3d" type="turtles_and_coke_listener.py" output="screen">
+
+    </node>
+
+</launch>
+
+
+
+
+

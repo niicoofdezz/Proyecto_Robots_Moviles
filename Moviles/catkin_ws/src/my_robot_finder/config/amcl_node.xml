@@ -1,0 +1,43 @@
+<launch>
+  <!-- Nodo AMCL para localización -->
+  <node name="amcl" pkg="amcl" type="amcl" output="screen">
+    <!-- Parámetros básicos -->
+    <param name="use_map_topic" value="true"/> <!-- Usa el mapa publicado -->
+    <param name="scan_topic" value="/scan"/>   <!-- Tema del LIDAR -->
+
+    <!-- Parámetros de inicialización de la pose -->
+    <param name="initial_pose_x" value="0.0"/>  <!-- Coordenada X inicial -->
+    <param name="initial_pose_y" value="0.0"/>  <!-- Coordenada Y inicial -->
+    <param name="initial_pose_a" value="0.0"/>  <!-- Orientación inicial -->
+
+    <!-- Parámetros de actualización -->
+    <param name="update_min_d" value="0.2"/>    <!-- Distancia mínima para actualización -->
+    <param name="update_min_a" value="0.1"/>    <!-- Ángulo mínimo para actualización -->
+
+    <!-- Parámetros del filtro de partículas -->
+    <param name="min_particles" value="500"/>   <!-- Mínimo número de partículas -->
+    <param name="max_particles" value="2000"/>  <!-- Máximo número de partículas -->
+    <param name="resample_interval" value="1"/> <!-- Intervalo de re-muestreo -->
+    <param name="transform_tolerance" value="0.1"/> <!-- Tolerancia de transformación -->
+
+    <!-- Parámetros específicos del sensor -->
+    <param name="laser_min_range" value="0.1"/>    <!-- Rango mínimo del LIDAR -->
+    <param name="laser_max_range" value="3.5"/>    <!-- Rango máximo del LIDAR -->
+    <param name="laser_z_hit" value="0.95"/>       <!-- Confianza en las lecturas correctas -->
+    <param name="laser_z_short" value="0.1"/>      <!-- Probabilidad de lecturas erróneas -->
+    <param name="laser_z_max" value="0.05"/>       <!-- Probabilidad de que un rayo exceda el rango -->
+    <param name="laser_z_rand" value="0.05"/>      <!-- Probabilidad de ruido aleatorio -->
+    <param name="laser_sigma_hit" value="0.2"/>    <!-- Desviación estándar para lecturas correctas -->
+
+    <!-- Parámetros de dispersión de movimiento -->
+    <param name="odom_alpha1" value="0.2"/> <!-- Ruido rotacional debido a rotación -->
+    <param name="odom_alpha2" value="0.2"/> <!-- Ruido traslacional debido a rotación -->
+    <param name="odom_alpha3" value="0.2"/> <!-- Ruido traslacional debido a traslación -->
+    <param name="odom_alpha4" value="0.2"/> <!-- Ruido rotacional debido a traslación -->
+
+    <!-- Otros parámetros -->
+    <param name="recovery_alpha_slow" value="0.001"/> <!-- Parámetro de recuperación lenta -->
+    <param name="recovery_alpha_fast" value="0.1"/>   <!-- Parámetro de recuperación rápida -->
+  </node>
+</launch>
+

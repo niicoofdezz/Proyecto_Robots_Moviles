@@ -1,0 +1,24 @@
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="true"/>
+  
+  <!-- Cargar el mapa desde el archivo YAML -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find my_robot_finder)/maps/mapa.yaml" />
+
+  <!-- Cargar el URDF del TurtleBot3 Burger (desde el paquete turtlebot3_description) -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_burger.urdf.xacro" />
+
+  <!-- Publicar el estado del robot -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <!-- Publicar transformaciones estáticas entre odom y base_link con una rotación válida -->
+  <node name="odom_to_base_link" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 1 odom base_link 100" />
+
+
+  <!-- Cargar el archivo de configuración para AMCL -->
+  <include file="$(find my_robot_finder)/config/amcl_node.xml"/>
+
+  <!-- Lanzar RViz con la configuración predefinida -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find my_robot_finder)/config/navigation_rviz.rviz"/>
+</launch>
+

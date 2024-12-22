@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>my_robot_finder</name>
+  <version>0.1.0</version>
+  <description>Un paquete para encontrar colores específicos y regresar al punto inicial.</description>
+
+  <maintainer email="tu_email@ejemplo.com">Tu Nombre</maintainer>
+  <license>MIT</license>
+
+  <!-- Dependencias de compilación y ejecución -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>nav_msgs</depend>
+  <depend>move_base_msgs</depend>
+
+  <!-- Opcional si utilizas la simulación con Gazebo -->
+  <depend>gazebo_ros</depend>
+
+  <export>
+    <!-- Exportaciones necesarias para el entorno de catkin -->
+  </export>
+</package>
